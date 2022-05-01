@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-import { ExampleComponent } from 'react-phone-code'
-import 'react-phone-code/dist/index.css'
+import { PhoneCode } from 'react-phone-code';
+import 'react-phone-code/dist/index.css';
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
-}
+  return <PhoneCode />;
+};
 
-export default App
+export default App;

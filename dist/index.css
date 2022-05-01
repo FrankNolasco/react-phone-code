@@ -1,9 +1,99 @@
-/* add css module styles here (optional) */
+._styles-module__phone-control__216c7 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #dbdfea;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: .2em;
+}
 
-._3ybTi {
-  margin: 2em;
-  padding: 0.5em;
-  border: 2px solid #000;
-  font-size: 2em;
-  text-align: center;
+._styles-module__phone-control__216c7 input,
+._styles-module__phone-control__216c7 input:focus {
+  width: 80px;
+  border: none;
+  outline: 0;
+}
+
+._styles-module__phone-control__216c7:hover {
+  color: #3c4d62;
+  background-color: #fff;
+  border-color: #854fff;
+  outline: 0;
+  box-shadow: 0 0 0 3px rgb(133 79 255 / 10%);
+}
+
+
+._styles-module__phone-control__216c7>._styles-module__flag-img__MvbKz {
+  padding: 0 .2em;
+  display: flex;
+  align-items: center;
+}
+
+._styles-module__flag-img__MvbKz img {
+  margin: 0 .1em 0 .3em;
+}
+
+
+._styles-module__flag-img__MvbKz>button {
+  background-color: transparent;
+  border: none;
+  outline: 0;
+  padding: 0;
+  color: #3c4d62;
+  padding: 0 .3em;
+
+}
+
+
+._styles-module__item-country-flag__3vbZs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: .75em .2em;
+  box-sizing: border-box;
+  background-color: #fff;
+  /* border-bottom: 1px solid #dbdfea; */
+  cursor: pointer;
+  gap: .7em;
+}
+
+._styles-module__item-country-flag__3vbZs img {
+  margin: 0 0 0 .5em;
+}
+
+._styles-module__select-country__3zy3f {
+  height: 70vh;
+  overflow-y: scroll;
+  padding: .5em 2em;
+}
+
+._styles-module__search-div__2tsK5 {
+  display: flex;
+  margin: 1em 2em .8em 2em;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+._styles-module__input-search__1Bt47 {
+  width: 100%;
+  border: none;
+  outline: 0;
+  padding: .2em;
+  background-color: #fff;
+  border-bottom: 1px solid #dbdfea;
+}
+
+
+._styles-module__btn-search__3QSID {
+  background-color: #fff;
+  border: none;
+  border-bottom: 1px solid #dbdfea;
+  box-sizing: border-box;
+  padding: .2em 2em;
+  cursor: pointer;
+  outline: 0;
 }
