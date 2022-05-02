@@ -3,7 +3,9 @@ import { Country } from '../../../data/Paises';
 interface Props {
     onChange: (value: Country | undefined) => void;
     value: Country | undefined;
-    onClickDown: MouseEventHandler;
+    onClickDown?: MouseEventHandler;
+    baseFlagUri?: string;
+    extFlagUri?: string;
 }
-declare const InputCode: ({ onClickDown, value, onChange }: Props) => JSX.Element;
+declare const InputCode: ({ onClickDown, value, onChange, baseFlagUri, extFlagUri, }: Props) => JSX.Element;
 export default InputCode;

@@ -1,5 +1,5 @@
-import React__default, { createElement, useState, useMemo, useEffect, Fragment } from 'react';
-import styled from 'styled-components';
+import React__default, { createElement, useState, useMemo, useEffect } from 'react';
+import styled, { ThemeProvider } from 'styled-components';
 
 const countries = [{
   nombre: 'Afganistán',
@@ -1603,51 +1603,99 @@ let _ = t => t,
     _t,
     _t2,
     _t3;
+const size = 'md';
 const InputContainer = styled.div(_t || (_t = _`
   display: flex;
-  width: max-content;
+  font-family: ${0};
+  font-size: ${0};
+  /* width: max-content; */
   flex-direction: row;
   align-items: center;
-  border: 1px solid #dbdfea;
-  border-radius: 4px;
+  border: 1px solid ${0};
+  border-radius: ${0};
   box-sizing: border-box;
-  padding: 0.2em;
+  padding: ${0};
+  background-color: ${0};
+  color: ${0};
   input,
   input:focus {
     width: 100%;
     border: none;
     outline: 0;
-    padding: 0.6em 0.25em;
+    padding: ${0};
+    color: ${0};
+    background-color: ${0};
   }
   :hover {
-    color: #3c4d62;
-    background-color: #fff;
-    border-color: #854fff;
+    border-color: ${0};
     outline: 0;
-    box-shadow: 0 0 0 3px rgb(133 79 255 / 10%);
+    box-shadow: 0 0 0 3px ${0}10;
   }
-`));
+`), ({
+  theme
+}) => theme.fonts.primary, ({
+  theme
+}) => theme.fontSizes[size], ({
+  theme
+}) => theme.colors.borders, ({
+  theme
+}) => theme.borderRadius[size], ({
+  theme
+}) => theme.spacing[size], ({
+  theme
+}) => theme.colors.background, ({
+  theme
+}) => theme.colors.text, ({
+  theme
+}) => `calc( ${theme.spacing[size]} / 2)`, ({
+  theme
+}) => theme.colors.text, ({
+  theme
+}) => theme.colors.background, ({
+  theme
+}) => theme.colors.primary, ({
+  theme
+}) => theme.colors.primary);
 const FlagImg = styled.div(_t2 || (_t2 = _`
-  padding: 0 0.75em 0 0.2em;
+  padding: 0
+    ${0}
+    0 0.2em;
   display: flex;
-  cursor: pointer;
+
+  cursor: ${0};
   align-items: center;
+
   img,
   .mark {
-    margin: 0 0.5em 0 0.3em;
+    margin: ${0};
   }
-`));
+
+  .mark {
+    fill: ${0};
+  }
+`), ({
+  touchDisable,
+  theme
+}) => touchDisable ? `calc( ${theme.spacing[size]} / 2)` : `calc( ${theme.spacing[size]})`, ({
+  touchDisable
+}) => touchDisable ? 'default' : 'pointer', ({
+  theme
+}) => ` 0 calc(${theme.spacing[size]}) 0 calc( ${theme.spacing[size]} / 2)`, ({
+  theme
+}) => theme.colors.text);
 const ButtonDown = styled.button(_t3 || (_t3 = _`
   border: none;
   outline: 0;
   padding: 0;
-  color: #3c4d62;
+  color: ${0};
   display: flex;
   align-items: flex-end;
   align-self: baseline;
   cursor: pointer;
   background-color: transparent;
-`));
+`), ({
+  theme
+}) => theme.colors.secondary);
 
 var _path;
 
@@ -1713,10 +1761,19 @@ function SvgMarcador(props) {
   })));
 }
 
+const FLAG_BASE_URI = 'https://flagcdn.com/48x36/';
+const FLAG_EXT = '.png';
+
+const getFlagUrl = (iso2, base, ext) => {
+  return `${base || FLAG_BASE_URI}${iso2.toLowerCase()}${ext || FLAG_EXT}`;
+};
+
 const InputCode = ({
   onClickDown,
   value,
-  onChange
+  onChange,
+  baseFlagUri,
+  extFlagUri
 }) => {
   const [inputValue, setValue] = useState('');
   const options = useMemo(() => countries.filter(x => x.phone_code !== '' && x.iso2.length === 2), []);
@@ -1742,24 +1799,23 @@ const InputCode = ({
     }
   }, [value]);
   return React__default.createElement(InputContainer, null, React__default.createElement(FlagImg, {
+    touchDisable: onClickDown === undefined,
     onClick: onClickDown
   }, flag && React__default.createElement("img", {
-    src: `https://flagcdn.com/48x36/${flag}.png`,
+    src: getFlagUrl(flag, baseFlagUri, extFlagUri),
     width: '16',
     height: '12',
     alt: 'flag'
   }), !flag && React__default.createElement(SvgMarcador, {
     className: 'mark',
     width: 16,
-    height: 12,
-    fill: '#424242'
-  }), React__default.createElement(ButtonDown, null, React__default.createElement(SvgAnguloHaciaAbajo, {
+    height: 12
+  }), onClickDown !== undefined && React__default.createElement(ButtonDown, null, React__default.createElement(SvgAnguloHaciaAbajo, {
     width: 12,
     height: 12,
     fill: '#7e7e7e',
     alignmentBaseline: 'auto'
   }))), React__default.createElement("span", null, "+"), React__default.createElement("input", {
-    type: 'number',
     placeholder: '123',
     value: inputValue,
     onChange: e => {
@@ -1776,13 +1832,14 @@ let _$1 = t => t,
     _t5,
     _t6,
     _t7;
+const size$1 = 'md';
 const ModalBlock = styled.div(_t$1 || (_t$1 = _$1`
   align-items: center;
   bottom: 0;
   justify-content: center;
   left: 0;
   overflow: hidden;
-  padding: 0.4rem;
+  padding: ${0};
   position: fixed;
   right: 0;
   top: 0;
@@ -1792,12 +1849,14 @@ const ModalBlock = styled.div(_t$1 || (_t$1 = _$1`
   display: flex;
   ${0}
 `), ({
+  theme
+}) => theme.spacing[size$1], ({
   active
 }) => !active && `&.inactive {
     display: none;
   }`);
 const ModalOverlay = styled.a(_t2$1 || (_t2$1 = _$1`
-  background: rgba(247, 248, 249, 0.75);
+  background: ${0}75;
   bottom: 0;
   cursor: default;
   display: block;
@@ -1805,15 +1864,17 @@ const ModalOverlay = styled.a(_t2$1 || (_t2$1 = _$1`
   position: absolute;
   right: 0;
   top: 0;
-`));
+`), ({
+  theme
+}) => theme.colors.background);
 const ModalContainer = styled.div(_t3$1 || (_t3$1 = _$1`
-  background: #ffffff;
+  background: ${0};
   border-radius: 0.1rem;
   display: flex;
   flex-direction: column;
   max-height: 90vh;
   max-width: 850px;
-  padding: 0 0.8rem;
+  padding: 0 ${0};
   width: 100%;
   z-index: 1;
   box-shadow: 0 0.2rem 0.5rem rgba(48, 55, 66, 0.3);
@@ -1836,14 +1897,22 @@ const ModalContainer = styled.div(_t3$1 || (_t3$1 = _$1`
       transform: scale(0);
     }
   }
-`), props => props.active ? 'animation: slide-down 0.3s ease 1;' : 'animation: vanished 0.3s ease 1;');
+`), ({
+  theme
+}) => theme.colors.background, ({
+  theme
+}) => `calc(2 * ${theme.spacing[size$1]})`, props => props.active ? 'animation: slide-down 0.3s ease 1;' : 'animation: vanished 0.3s ease 1;');
 const ModalHeader = styled.div(_t4 || (_t4 = _$1`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  color: #303742;
-  padding: 20px 5px 10px 5px;
-`));
+  color: ${0};
+  padding: ${0};
+`), ({
+  theme
+}) => theme.colors.text, ({
+  theme
+}) => `calc(2 * ${theme.spacing[size$1]}) calc(${theme.spacing[size$1]} / 2) ${theme.spacing[size$1]} calc(${theme.spacing[size$1]} / 2)`);
 const ModalTitle = styled.span(_t5 || (_t5 = _$1`
   font-size: 22px;
   font-weight: 500;
@@ -1887,14 +1956,19 @@ const ItemModalListStyled = styled.div(_t$2 || (_t$2 = _$2`
   width: 100%;
   padding: 0.75em 0.2em;
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: ${0};
+  color: ${0};
   /* border-bottom: 1px solid #dbdfea; */
   cursor: pointer;
   gap: 0.7em;
   img {
     margin: 0 0 0 0.5em;
   }
-`));
+`), ({
+  theme
+}) => theme.colors.background, ({
+  theme
+}) => theme.colors.text);
 
 const ItemModalList = ({
   item,
@@ -1948,6 +2022,7 @@ let _$3 = t => t,
     _t$3,
     _t2$2,
     _t3$2;
+const size$2 = 'md';
 const Searcher = styled.div(_t$3 || (_t$3 = _$3``));
 const ButtonSearch = styled.button(_t2$2 || (_t2$2 = _$3`
   border: none;
@@ -1956,7 +2031,7 @@ const ButtonSearch = styled.button(_t2$2 || (_t2$2 = _$3`
   outline: none;
   &:hover {
     svg {
-      fill: #854fff;
+      fill: ${0};
     }
   }
   &:focus {
@@ -1965,12 +2040,22 @@ const ButtonSearch = styled.button(_t2$2 || (_t2$2 = _$3`
   &:active {
     outline: none;
   }
-`));
+`), ({
+  theme
+}) => theme.colors.primary);
 const ListCountries = styled.div(_t3$2 || (_t3$2 = _$3`
+  font-family: ${0};
+  font-size: ${0};
   height: 60vh;
   overflow-y: auto;
-  margin-top: 20px;
-`));
+  margin-top: ${0};
+`), ({
+  theme
+}) => theme.fonts.primary, ({
+  theme
+}) => `calc(${theme.fontSizes[size$2]} / 1.3)`, ({
+  theme
+}) => theme.spacing[size$2]);
 
 const cloneJAR = arr => {
   return JSON.parse(JSON.stringify(arr));
@@ -2023,17 +2108,57 @@ const ModalPhoneCode = ({
   }))));
 };
 
-const PhoneCode = () => {
-  const [value, setValue] = useState();
+const Theme = {
+  colors: {
+    primary: '#854fff',
+    secondary: '#854fff',
+    text: '#333333',
+    background: '#ffffff',
+    borders: '#dbdfea'
+  },
+  fonts: {
+    primary: 'Roboto, sans-serif'
+  },
+  fontSizes: {
+    sm: '1.5rem',
+    md: '1.2rem',
+    lg: '1rem'
+  },
+  spacing: {
+    sm: '.25em',
+    md: '0.4em',
+    lg: '1em'
+  },
+  borderRadius: {
+    sm: '0.25em',
+    md: '0.5em',
+    lg: '1em'
+  }
+};
+const darkTheme = { ...Theme,
+  colors: { ...Theme.colors,
+    text: '#dbdfea',
+    background: '#333333',
+    borders: '#7e7e7e'
+  }
+};
+
+const PhoneCode = ({
+  value,
+  onChange,
+  disableModal
+}) => {
   const [modalActive, setModalActive] = useState(false);
-  return React__default.createElement(Fragment, null, React__default.createElement(InputCode, {
+  return React__default.createElement(ThemeProvider, {
+    theme: darkTheme
+  }, React__default.createElement(InputCode, {
     value: value,
-    onChange: setValue,
-    onClickDown: () => setModalActive(true)
-  }), React__default.createElement(ModalPhoneCode, {
+    onChange: onChange,
+    onClickDown: disableModal ? undefined : () => setModalActive(true)
+  }), disableModal || React__default.createElement(ModalPhoneCode, {
     active: modalActive,
     setActive: setModalActive,
-    onChange: setValue
+    onChange: onChange
   }));
 };
 
