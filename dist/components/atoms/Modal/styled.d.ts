@@ -1,3 +1,4 @@
+export declare type SizeType = 'sm' | 'md' | 'lg';
 interface Props {
     active: boolean;
 }

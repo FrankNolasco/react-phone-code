@@ -5,6 +5,33 @@ var React__default = _interopDefault(React);
 var styled = require('styled-components');
 var styled__default = _interopDefault(styled);
 
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+function _taggedTemplateLiteralLoose(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
+
+  strings.raw = raw;
+  return strings;
+}
+
 var countries = [{
   nombre: 'Afganistán',
   name: 'Afghanistan',
@@ -1605,50 +1632,22 @@ var countries = [{
   return x.phone_code !== '' && x.iso2.length === 2;
 });
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-function _taggedTemplateLiteralLoose(strings, raw) {
-  if (!raw) {
-    raw = strings.slice(0);
-  }
-
-  strings.raw = raw;
-  return strings;
-}
-
 var _templateObject, _templateObject2, _templateObject3;
-var size = 'md';
-var InputContainer = styled__default.div(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n  display: flex;\n  font-family: ", ";\n  font-size: ", ";\n  /* width: max-content; */\n  flex-direction: row;\n  align-items: center;\n  border: 1px solid ", ";\n  border-radius: ", ";\n  box-sizing: border-box;\n  padding: ", ";\n  background-color: ", ";\n  color: ", ";\n  input,\n  input:focus {\n    width: 100%;\n    border: none;\n    outline: 0;\n    padding: ", ";\n    color: ", ";\n    background-color: ", ";\n  }\n  :hover {\n    border-color: ", ";\n    outline: 0;\n    box-shadow: 0 0 0 3px ", "10;\n  }\n"])), function (_ref) {
+var InputContainer = styled__default.div(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n  display: flex;\n  font-family: ", ";\n  font-size: ", ";\n  /* width: max-content; */\n  flex-direction: row;\n  align-items: center;\n  border: 1px solid ", ";\n  border-radius: ", ";\n  box-sizing: border-box;\n  padding: ", ";\n  background-color: ", ";\n  color: ", ";\n  .simbol-plus {\n    font-size: ", ";\n  }\n  input,\n  input:focus {\n    width: 100%;\n    border: none;\n    outline: 0;\n    padding: ", ";\n    color: ", ";\n    background-color: ", ";\n  }\n  :hover {\n    border-color: ", ";\n    outline: 0;\n    box-shadow: 0 0 0 3px ", "10;\n  }\n"])), function (_ref) {
   var theme = _ref.theme;
   return theme.fonts.primary;
 }, function (_ref2) {
   var theme = _ref2.theme;
-  return theme.fontSizes[size];
+  return theme.fontSizes[theme.size || 'md'];
 }, function (_ref3) {
   var theme = _ref3.theme;
   return theme.colors.borders;
 }, function (_ref4) {
   var theme = _ref4.theme;
-  return theme.borderRadius[size];
+  return theme.borderRadius[theme.size || 'md'];
 }, function (_ref5) {
   var theme = _ref5.theme;
-  return theme.spacing[size];
+  return theme.spacing[theme.size || 'md'];
 }, function (_ref6) {
   var theme = _ref6.theme;
   return theme.colors.background;
@@ -1657,36 +1656,39 @@ var InputContainer = styled__default.div(_templateObject || (_templateObject = _
   return theme.colors.text;
 }, function (_ref8) {
   var theme = _ref8.theme;
-  return "calc( " + theme.spacing[size] + " / 2)";
+  return "calc(" + theme.fontSizes[theme.size || 'md'] + " * .7)";
 }, function (_ref9) {
   var theme = _ref9.theme;
-  return theme.colors.text;
+  return "calc( " + theme.spacing[theme.size || 'md'] + " / 2)";
 }, function (_ref10) {
   var theme = _ref10.theme;
-  return theme.colors.background;
+  return theme.colors.text;
 }, function (_ref11) {
   var theme = _ref11.theme;
-  return theme.colors.primary;
+  return theme.colors.background;
 }, function (_ref12) {
   var theme = _ref12.theme;
   return theme.colors.primary;
+}, function (_ref13) {
+  var theme = _ref13.theme;
+  return theme.colors.primary;
 });
-var FlagImg = styled__default.div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n  padding: 0\n    ", "\n    0 0.2em;\n  display: flex;\n\n  cursor: ", ";\n  align-items: center;\n\n  img,\n  .mark {\n    margin: ", ";\n  }\n\n  .mark {\n    fill: ", ";\n  }\n"])), function (_ref13) {
-  var touchDisable = _ref13.touchDisable,
-      theme = _ref13.theme;
-  return touchDisable ? "calc( " + theme.spacing[size] + " / 2)" : "calc( " + theme.spacing[size] + ")";
-}, function (_ref14) {
-  var touchDisable = _ref14.touchDisable;
-  return touchDisable ? 'default' : 'pointer';
+var FlagImg = styled__default.div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n  padding: 0\n    ", "\n    0 0.2em;\n  display: flex;\n\n  cursor: ", ";\n  align-items: center;\n\n  img,\n  .mark {\n    margin: ", ";\n  }\n\n  .mark {\n    fill: ", ";\n  }\n"])), function (_ref14) {
+  var touchDisable = _ref14.touchDisable,
+      theme = _ref14.theme;
+  return touchDisable ? "calc( " + theme.spacing[theme.size || 'md'] + " / 2)" : "calc( " + theme.spacing[theme.size || 'md'] + ")";
 }, function (_ref15) {
-  var theme = _ref15.theme;
-  return " 0 calc(" + theme.spacing[size] + ") 0 calc( " + theme.spacing[size] + " / 2)";
+  var touchDisable = _ref15.touchDisable;
+  return touchDisable ? 'default' : 'pointer';
 }, function (_ref16) {
   var theme = _ref16.theme;
+  return " 0 calc(" + theme.spacing[theme.size || 'md'] + ") 0 calc( " + theme.spacing[theme.size || 'md'] + " / 2)";
+}, function (_ref17) {
+  var theme = _ref17.theme;
   return theme.colors.text;
 });
-var ButtonDown = styled__default.button(_templateObject3 || (_templateObject3 = _taggedTemplateLiteralLoose(["\n  border: none;\n  outline: 0;\n  padding: 0;\n  color: ", ";\n  display: flex;\n  align-items: flex-end;\n  align-self: baseline;\n  cursor: pointer;\n  background-color: transparent;\n"])), function (_ref17) {
-  var theme = _ref17.theme;
+var ButtonDown = styled__default.button(_templateObject3 || (_templateObject3 = _taggedTemplateLiteralLoose(["\n  border: none;\n  outline: 0;\n  padding: 0;\n  color: ", ";\n  display: flex;\n  align-items: flex-end;\n  align-self: baseline;\n  cursor: pointer;\n  background-color: transparent;\n"])), function (_ref18) {
+  var theme = _ref18.theme;
   return theme.colors.secondary;
 });
 
@@ -1822,7 +1824,9 @@ var InputCode = function InputCode(_ref) {
     height: 12,
     fill: '#7e7e7e',
     alignmentBaseline: 'auto'
-  }))), React__default.createElement("span", null, "+"), React__default.createElement("input", {
+  }))), React__default.createElement("span", {
+    className: 'simbol-plus'
+  }, "+"), React__default.createElement("input", {
     placeholder: '123',
     value: inputValue,
     onChange: function onChange(e) {
@@ -1832,10 +1836,9 @@ var InputCode = function InputCode(_ref) {
 };
 
 var _templateObject$1, _templateObject2$1, _templateObject3$1, _templateObject4, _templateObject5, _templateObject6, _templateObject7;
-var size$1 = 'md';
 var ModalBlock = styled__default.div(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteralLoose(["\n  align-items: center;\n  bottom: 0;\n  justify-content: center;\n  left: 0;\n  overflow: hidden;\n  padding: ", ";\n  position: fixed;\n  right: 0;\n  top: 0;\n  opacity: 1;\n  z-index: 400;\n  transition: display 1s;\n  display: flex;\n  ", "\n"])), function (_ref) {
   var theme = _ref.theme;
-  return theme.spacing[size$1];
+  return theme.spacing[theme.size || 'md'];
 }, function (_ref2) {
   var active = _ref2.active;
   return !active && "&.inactive {\n    display: none;\n  }";
@@ -1844,12 +1847,12 @@ var ModalOverlay = styled__default.a(_templateObject2$1 || (_templateObject2$1 =
   var theme = _ref3.theme;
   return theme.colors.background;
 });
-var ModalContainer = styled__default.div(_templateObject3$1 || (_templateObject3$1 = _taggedTemplateLiteralLoose(["\n  background: ", ";\n  border-radius: 0.1rem;\n  display: flex;\n  flex-direction: column;\n  max-height: 90vh;\n  max-width: 850px;\n  padding: 0 ", ";\n  width: 100%;\n  z-index: 1;\n  box-shadow: 0 0.2rem 0.5rem rgba(48, 55, 66, 0.3);\n  ", "\n  @keyframes slide-down {\n    0% {\n      transform: translateY(100%);\n    }\n    100% {\n      transform: translateY(0%);\n    }\n  }\n  @keyframes vanished {\n    0% {\n      display: flex;\n      transform: scale(1);\n    }\n    100% {\n      display: none;\n      transform: scale(0);\n    }\n  }\n"])), function (_ref4) {
+var ModalContainer = styled__default.div(_templateObject3$1 || (_templateObject3$1 = _taggedTemplateLiteralLoose(["\n  background: ", ";\n  border-radius: 0.1rem;\n  display: flex;\n  flex-direction: column;\n  max-height: 90vh;\n  max-width: 850px;\n  padding: 0\n    ", ";\n  width: 100%;\n  z-index: 1;\n  box-shadow: 0 0.2rem 0.5rem rgba(48, 55, 66, 0.3);\n  ", "\n  @keyframes slide-down {\n    0% {\n      transform: translateY(100%);\n    }\n    100% {\n      transform: translateY(0%);\n    }\n  }\n  @keyframes vanished {\n    0% {\n      display: flex;\n      transform: scale(1);\n    }\n    100% {\n      display: none;\n      transform: scale(0);\n    }\n  }\n"])), function (_ref4) {
   var theme = _ref4.theme;
   return theme.colors.background;
 }, function (_ref5) {
   var theme = _ref5.theme;
-  return "calc(2 * " + theme.spacing[size$1] + ")";
+  return "calc(2 * " + theme.spacing[theme.size || 'md'] + ")";
 }, function (props) {
   return props.active ? 'animation: slide-down 0.3s ease 1;' : 'animation: vanished 0.3s ease 1;';
 });
@@ -1858,10 +1861,16 @@ var ModalHeader = styled__default.div(_templateObject4 || (_templateObject4 = _t
   return theme.colors.text;
 }, function (_ref7) {
   var theme = _ref7.theme;
-  return "calc(2 * " + theme.spacing[size$1] + ") calc(" + theme.spacing[size$1] + " / 2) " + theme.spacing[size$1] + " calc(" + theme.spacing[size$1] + " / 2)";
+  return "calc(2 * " + theme.spacing[theme.size || 'md'] + ") calc(" + theme.spacing[theme.size || 'md'] + " / 2) " + theme.spacing[theme.size || 'md'] + " calc(" + theme.spacing[theme.size || 'md'] + " / 2)";
 });
-var ModalTitle = styled__default.span(_templateObject5 || (_templateObject5 = _taggedTemplateLiteralLoose(["\n  font-size: 22px;\n  font-weight: 500;\n"])));
-var ModalClose = styled__default.a(_templateObject6 || (_templateObject6 = _taggedTemplateLiteralLoose(["\n  float: right !important;\n  text-decoration: none !important;\n  cursor: pointer;\n  font-size: 0.75rem;\n"])));
+var ModalTitle = styled__default.span(_templateObject5 || (_templateObject5 = _taggedTemplateLiteralLoose(["\n  font-size: ", ";\n  font-weight: 500;\n"])), function (_ref8) {
+  var theme = _ref8.theme;
+  return theme.fontSizes[theme.size || 'md'];
+});
+var ModalClose = styled__default.a(_templateObject6 || (_templateObject6 = _taggedTemplateLiteralLoose(["\n  float: right !important;\n  text-decoration: none !important;\n  cursor: pointer;\n  font-size: ", ";\n"])), function (_ref9) {
+  var theme = _ref9.theme;
+  return "calc(" + theme.fontSizes[theme.size || 'md'] + " * .6)";
+});
 var ModalBody = styled__default.div(_templateObject7 || (_templateObject7 = _taggedTemplateLiteralLoose(["\n  overflow-y: auto;\n  padding: 15px 10px 20px 10px;\n  position: relative;\n"])));
 
 var Modal = function Modal(_ref) {
@@ -1882,12 +1891,21 @@ var Modal = function Modal(_ref) {
 };
 
 var _templateObject$2;
-var ItemModalListStyled = styled__default.div(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteralLoose(["\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  width: 100%;\n  padding: 0.75em 0.2em;\n  box-sizing: border-box;\n  background-color: ", ";\n  color: ", ";\n  /* border-bottom: 1px solid #dbdfea; */\n  cursor: pointer;\n  gap: 0.7em;\n  img {\n    margin: 0 0 0 0.5em;\n  }\n"])), function (_ref) {
+var ItemModalListStyled = styled__default.div(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteralLoose(["\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  width: 100%;\n  padding: ", ";\n  box-sizing: border-box;\n  background-color: ", ";\n  color: ", ";\n  /* border-bottom: 1px solid #dbdfea; */\n  cursor: pointer;\n  gap: ", ";\n  img {\n    margin: 0 0 0 ", ";\n  }\n"])), function (_ref) {
   var theme = _ref.theme;
-  return theme.colors.background;
+  return "calc(" + theme.spacing[theme.size || 'md'] + " * 2) calc(" + theme.spacing[theme.size || 'md'] + " / 2)";
 }, function (_ref2) {
   var theme = _ref2.theme;
+  return theme.colors.background;
+}, function (_ref3) {
+  var theme = _ref3.theme;
   return theme.colors.text;
+}, function (_ref4) {
+  var theme = _ref4.theme;
+  return theme.spacing[theme.size || 'md'];
+}, function (_ref5) {
+  var theme = _ref5.theme;
+  return theme.spacing[theme.size || 'md'];
 });
 
 var ItemModalList = function ItemModalList(_ref) {
@@ -1939,7 +1957,6 @@ function SvgSearch(props) {
 }
 
 var _templateObject$3, _templateObject2$2, _templateObject3$2;
-var size$2 = 'md';
 var Searcher = styled__default.div(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteralLoose([""])));
 var ButtonSearch = styled__default.button(_templateObject2$2 || (_templateObject2$2 = _taggedTemplateLiteralLoose(["\n  border: none;\n  background-color: transparent;\n  cursor: pointer;\n  outline: none;\n  &:hover {\n    svg {\n      fill: ", ";\n    }\n  }\n  &:focus {\n    outline: none;\n  }\n  &:active {\n    outline: none;\n  }\n"])), function (_ref) {
   var theme = _ref.theme;
@@ -1950,10 +1967,10 @@ var ListCountries = styled__default.div(_templateObject3$2 || (_templateObject3$
   return theme.fonts.primary;
 }, function (_ref3) {
   var theme = _ref3.theme;
-  return "calc(" + theme.fontSizes[size$2] + " / 1.3)";
+  return "calc(" + theme.fontSizes[theme.size || 'md'] + " / 1.3)";
 }, function (_ref4) {
   var theme = _ref4.theme;
-  return theme.spacing[size$2];
+  return theme.spacing[theme.size || 'md'];
 });
 
 var cloneJAR = function cloneJAR(arr) {
@@ -2033,9 +2050,9 @@ var Theme = {
     primary: 'Roboto, sans-serif'
   },
   fontSizes: {
-    sm: '1.5rem',
-    md: '1.2rem',
-    lg: '1rem'
+    sm: '1rem',
+    md: '1.3rem',
+    lg: '1.6rem'
   },
   spacing: {
     sm: '.25em',
@@ -2059,14 +2076,18 @@ var darkTheme = _extends({}, Theme, {
 var PhoneCode = function PhoneCode(_ref) {
   var value = _ref.value,
       onChange = _ref.onChange,
-      disableModal = _ref.disableModal;
+      disableModal = _ref.disableModal,
+      size = _ref.size,
+      theme = _ref.theme;
 
   var _useState = React.useState(false),
       modalActive = _useState[0],
       setModalActive = _useState[1];
 
   return React__default.createElement(styled.ThemeProvider, {
-    theme: darkTheme
+    theme: _extends({}, Theme, theme, {
+      size: size
+    })
   }, React__default.createElement(InputCode, {
     value: value,
     onChange: onChange,

@@ -1,54 +1,39 @@
-export declare const Theme: {
-    colors: {
-        primary: string;
-        secondary: string;
-        text: string;
-        background: string;
-        borders: string;
-    };
-    fonts: {
-        primary: string;
-    };
-    fontSizes: {
-        sm: string;
-        md: string;
-        lg: string;
-    };
-    spacing: {
-        sm: string;
-        md: string;
-        lg: string;
-    };
-    borderRadius: {
-        sm: string;
-        md: string;
-        lg: string;
-    };
+import { SizeType } from '../components/atoms/Modal/styled';
+declare type DefSize = {
+    sm: string;
+    md: string;
+    lg: string;
 };
+export interface ThemeProps {
+    size?: SizeType;
+    colors?: {
+        [key: string]: string;
+    };
+    fonts?: {
+        [key: string]: string;
+    };
+    borderRadius?: {
+        [key: string]: string;
+    };
+    spacing?: DefSize;
+    fontSizes?: DefSize;
+    [key: string]: unknown;
+}
+export declare const Theme: ThemeProps;
 export declare const darkTheme: {
     colors: {
         text: string;
         background: string;
         borders: string;
-        primary: string;
-        secondary: string;
     };
-    fonts: {
-        primary: string;
-    };
-    fontSizes: {
-        sm: string;
-        md: string;
-        lg: string;
-    };
-    spacing: {
-        sm: string;
-        md: string;
-        lg: string;
-    };
-    borderRadius: {
-        sm: string;
-        md: string;
-        lg: string;
-    };
+    size?: "sm" | "md" | "lg" | undefined;
+    fonts?: {
+        [key: string]: string;
+    } | undefined;
+    borderRadius?: {
+        [key: string]: string;
+    } | undefined;
+    spacing?: DefSize | undefined;
+    fontSizes?: DefSize | undefined;
 };
+export {};
