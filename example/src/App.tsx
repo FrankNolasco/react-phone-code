@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { PhoneCode } from 'react-phone-code';
-import 'react-phone-code/dist/index.css';
+import { PhoneCode, TypeValueExpected } from 'react-phone-code';
 
 const App = () => {
-  return <PhoneCode />;
+  const [value, setValue] = useState<TypeValueExpected>();
+  return (
+    <div className='container'>
+      <PhoneCode value={value} onChange={setValue} />
+      {value && (
+        <p>
+          Se asignó un valor {value.nombre} (+{value.phone_code})
+        </p>
+      )}
+    </div>
+  );
 };
 
 export default App;

@@ -1,23 +1,40 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
+import { ThemeProvider } from 'styled-components';
 import InputCode from './components/organisms/InputCode/inputCode';
 import ModalPhoneCode from './components/organisms/ModalPhoneCode/ModalPhoneCode';
 import { Country } from './data/Paises';
+import { darkTheme } from './data/Theme';
 
-export const PhoneCode = (): JSX.Element => {
-  const [value, setValue] = useState<Country | undefined>();
+export type TypeValueExpected = Country | undefined;
+
+interface Props {
+  value: TypeValueExpected;
+  onChange: (value: TypeValueExpected) => void;
+  disableModal?: boolean;
+}
+
+export const PhoneCode = ({
+  value,
+  onChange,
+  disableModal,
+}: Props): JSX.Element => {
   const [modalActive, setModalActive] = useState(false);
   return (
-    <Fragment>
+    <ThemeProvider theme={darkTheme}>
       <InputCode
         value={value}
-        onChange={setValue}
-        onClickDown={(): void => setModalActive(true)}
+        onChange={onChange}
+        onClickDown={
+          disableModal ? undefined : (): void => setModalActive(true)
+        }
       />
-      <ModalPhoneCode
-        active={modalActive}
-        setActive={setModalActive}
-        onChange={setValue}
-      />
-    </Fragment>
+      {disableModal || (
+        <ModalPhoneCode
+          active={modalActive}
+          setActive={setModalActive}
+          onChange={onChange}
+        />
+      )}
+    </ThemeProvider>
   );
 };

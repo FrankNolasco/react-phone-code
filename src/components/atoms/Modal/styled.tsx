@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import styled from 'styled-components';
-
+const size = 'md';
 interface Props {
   active: boolean;
 }
@@ -11,7 +11,7 @@ export const ModalBlock = styled.div<Props>`
   justify-content: center;
   left: 0;
   overflow: hidden;
-  padding: 0.4rem;
+  padding: ${({ theme }): string => theme.spacing[size]};
   position: fixed;
   right: 0;
   top: 0;
@@ -27,7 +27,7 @@ export const ModalBlock = styled.div<Props>`
 `;
 
 export const ModalOverlay = styled.a`
-  background: rgba(247, 248, 249, 0.75);
+  background: ${({ theme }): string => theme.colors.background}75;
   bottom: 0;
   cursor: default;
   display: block;
@@ -38,13 +38,13 @@ export const ModalOverlay = styled.a`
 `;
 
 export const ModalContainer = styled.div<Props>`
-  background: #ffffff;
+  background: ${({ theme }): string => theme.colors.background};
   border-radius: 0.1rem;
   display: flex;
   flex-direction: column;
   max-height: 90vh;
   max-width: 850px;
-  padding: 0 0.8rem;
+  padding: 0 ${({ theme }): string => `calc(2 * ${theme.spacing[size]})`};
   width: 100%;
   z-index: 1;
   box-shadow: 0 0.2rem 0.5rem rgba(48, 55, 66, 0.3);
@@ -76,8 +76,9 @@ export const ModalHeader = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  color: #303742;
-  padding: 20px 5px 10px 5px;
+  color: ${({ theme }): string => theme.colors.text};
+  padding: ${({ theme }): string =>
+    `calc(2 * ${theme.spacing[size]}) calc(${theme.spacing[size]} / 2) ${theme.spacing[size]} calc(${theme.spacing[size]} / 2)`};
 `;
 
 export const ModalTitle = styled.span`

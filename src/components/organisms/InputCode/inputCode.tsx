@@ -3,14 +3,23 @@ import { countries, Country } from '../../../data/Paises';
 import { ButtonDown, FlagImg, InputContainer } from './styled';
 import { ReactComponent as AngleDown } from '../../../assets/angulo-hacia-abajo.svg';
 import { ReactComponent as MarkDefault } from '../../../assets/marcador.svg';
+import { getFlagUrl } from '../../../utils/utils';
 
 interface Props {
   onChange: (value: Country | undefined) => void;
   value: Country | undefined;
-  onClickDown: MouseEventHandler;
+  onClickDown?: MouseEventHandler;
+  baseFlagUri?: string;
+  extFlagUri?: string;
 }
 
-const InputCode = ({ onClickDown, value, onChange }: Props): JSX.Element => {
+const InputCode = ({
+  onClickDown,
+  value,
+  onChange,
+  baseFlagUri,
+  extFlagUri,
+}: Props): JSX.Element => {
   const [inputValue, setValue] = useState('');
   const options: Country[] = useMemo(
     () => countries.filter(x => x.phone_code !== '' && x.iso2.length === 2),
@@ -39,30 +48,29 @@ const InputCode = ({ onClickDown, value, onChange }: Props): JSX.Element => {
 
   return (
     <InputContainer>
-      <FlagImg onClick={onClickDown}>
+      <FlagImg touchDisable={onClickDown === undefined} onClick={onClickDown}>
         {flag && (
           <img
-            src={`https://flagcdn.com/48x36/${flag}.png`}
+            src={getFlagUrl(flag, baseFlagUri, extFlagUri)}
             width='16'
             height='12'
             alt='flag'
           />
         )}
-        {!flag && (
-          <MarkDefault className='mark' width={16} height={12} fill='#424242' />
+        {!flag && <MarkDefault className='mark' width={16} height={12} />}
+        {onClickDown !== undefined && (
+          <ButtonDown>
+            <AngleDown
+              width={12}
+              height={12}
+              fill='#7e7e7e'
+              alignmentBaseline='auto'
+            />
+          </ButtonDown>
         )}
-        <ButtonDown>
-          <AngleDown
-            width={12}
-            height={12}
-            fill='#7e7e7e'
-            alignmentBaseline='auto'
-          />
-        </ButtonDown>
       </FlagImg>
       <span>+</span>
       <input
-        type='number'
         placeholder='123'
         value={inputValue}
         onChange={(e): void => {
