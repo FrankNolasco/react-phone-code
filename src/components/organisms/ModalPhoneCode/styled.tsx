@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-const size = 'md';
 export const Searcher = styled.div``;
 
 export const ButtonSearch = styled.button`
@@ -22,8 +21,9 @@ export const ButtonSearch = styled.button`
 
 export const ListCountries = styled.div`
   font-family: ${({ theme }): string => theme.fonts.primary};
-  font-size: ${({ theme }): string => `calc(${theme.fontSizes[size]} / 1.3)`};
+  font-size: ${({ theme }): string =>
+    `calc(${theme.fontSizes[theme.size || 'md']} / 1.3)`};
   height: 60vh;
   overflow-y: auto;
-  margin-top: ${({ theme }): string => theme.spacing[size]};
+  margin-top: ${({ theme }): string => theme.spacing[theme.size || 'md']};
 `;

@@ -69,7 +69,7 @@ const InputCode = ({
           </ButtonDown>
         )}
       </FlagImg>
-      <span>+</span>
+      <span className='simbol-plus'>+</span>
       <input
         placeholder='123'
         value={inputValue}

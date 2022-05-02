@@ -1,24 +1,30 @@
 import styled from 'styled-components';
-const size = 'md';
+import { SizeType } from '../../atoms/Modal/styled';
 export const InputContainer = styled.div`
   display: flex;
   font-family: ${({ theme }): string => theme.fonts.primary};
-  font-size: ${({ theme }): string => theme.fontSizes[size]};
+  font-size: ${({ theme }): string => theme.fontSizes[theme.size || 'md']};
   /* width: max-content; */
   flex-direction: row;
   align-items: center;
   border: 1px solid ${({ theme }): string => theme.colors.borders};
-  border-radius: ${({ theme }): string => theme.borderRadius[size]};
+  border-radius: ${({ theme }): string =>
+    theme.borderRadius[theme.size || 'md']};
   box-sizing: border-box;
-  padding: ${({ theme }): string => theme.spacing[size]};
+  padding: ${({ theme }): string => theme.spacing[theme.size || 'md']};
   background-color: ${({ theme }): string => theme.colors.background};
   color: ${({ theme }): string => theme.colors.text};
+  .simbol-plus {
+    font-size: ${({ theme }): string =>
+      `calc(${theme.fontSizes[theme.size || 'md']} * .7)`};
+  }
   input,
   input:focus {
     width: 100%;
     border: none;
     outline: 0;
-    padding: ${({ theme }): string => `calc( ${theme.spacing[size]} / 2)`};
+    padding: ${({ theme }): string =>
+      `calc( ${theme.spacing[theme.size || 'md']} / 2)`};
     color: ${({ theme }): string => theme.colors.text};
     background-color: ${({ theme }): string => theme.colors.background};
   }
@@ -31,14 +37,15 @@ export const InputContainer = styled.div`
 
 interface FlagImgProps {
   touchDisable: boolean;
+  size?: SizeType;
 }
 
 export const FlagImg = styled.div<FlagImgProps>`
   padding: 0
     ${({ touchDisable, theme }): string =>
       touchDisable
-        ? `calc( ${theme.spacing[size]} / 2)`
-        : `calc( ${theme.spacing[size]})`}
+        ? `calc( ${theme.spacing[theme.size || 'md']} / 2)`
+        : `calc( ${theme.spacing[theme.size || 'md']})`}
     0 0.2em;
   display: flex;
 
@@ -49,7 +56,9 @@ export const FlagImg = styled.div<FlagImgProps>`
   img,
   .mark {
     margin: ${({ theme }): string =>
-      ` 0 calc(${theme.spacing[size]}) 0 calc( ${theme.spacing[size]} / 2)`};
+      ` 0 calc(${theme.spacing[theme.size || 'md']}) 0 calc( ${
+        theme.spacing[theme.size || 'md']
+      } / 2)`};
   }
 
   .mark {

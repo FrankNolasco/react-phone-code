@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import styled from 'styled-components';
-const size = 'md';
+
+export type SizeType = 'sm' | 'md' | 'lg';
 interface Props {
   active: boolean;
 }
@@ -11,7 +12,7 @@ export const ModalBlock = styled.div<Props>`
   justify-content: center;
   left: 0;
   overflow: hidden;
-  padding: ${({ theme }): string => theme.spacing[size]};
+  padding: ${({ theme }): string => theme.spacing[theme.size || 'md']};
   position: fixed;
   right: 0;
   top: 0;
@@ -44,7 +45,8 @@ export const ModalContainer = styled.div<Props>`
   flex-direction: column;
   max-height: 90vh;
   max-width: 850px;
-  padding: 0 ${({ theme }): string => `calc(2 * ${theme.spacing[size]})`};
+  padding: 0
+    ${({ theme }): string => `calc(2 * ${theme.spacing[theme.size || 'md']})`};
   width: 100%;
   z-index: 1;
   box-shadow: 0 0.2rem 0.5rem rgba(48, 55, 66, 0.3);
@@ -78,11 +80,15 @@ export const ModalHeader = styled.div`
   justify-content: space-between;
   color: ${({ theme }): string => theme.colors.text};
   padding: ${({ theme }): string =>
-    `calc(2 * ${theme.spacing[size]}) calc(${theme.spacing[size]} / 2) ${theme.spacing[size]} calc(${theme.spacing[size]} / 2)`};
+    `calc(2 * ${theme.spacing[theme.size || 'md']}) calc(${
+      theme.spacing[theme.size || 'md']
+    } / 2) ${theme.spacing[theme.size || 'md']} calc(${
+      theme.spacing[theme.size || 'md']
+    } / 2)`};
 `;
 
 export const ModalTitle = styled.span`
-  font-size: 22px;
+  font-size: ${({ theme }): string => theme.fontSizes[theme.size || 'md']};
   font-weight: 500;
 `;
 
@@ -90,7 +96,8 @@ export const ModalClose = styled.a`
   float: right !important;
   text-decoration: none !important;
   cursor: pointer;
-  font-size: 0.75rem;
+  font-size: ${({ theme }): string =>
+    `calc(${theme.fontSizes[theme.size || 'md']} * .6)`};
 `;
 
 export const ModalBody = styled.div`

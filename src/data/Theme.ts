@@ -1,4 +1,21 @@
-export const Theme = {
+import { SizeType } from '../components/atoms/Modal/styled';
+
+type DefSize = {
+  sm: string;
+  md: string;
+  lg: string;
+};
+export interface ThemeProps {
+  size?: SizeType;
+  colors?: { [key: string]: string };
+  fonts?: { [key: string]: string };
+  borderRadius?: { [key: string]: string };
+  spacing?: DefSize;
+  fontSizes?: DefSize;
+  [key: string]: unknown;
+}
+
+export const Theme: ThemeProps = {
   colors: {
     primary: '#854fff',
     secondary: '#854fff',
@@ -10,9 +27,9 @@ export const Theme = {
     primary: 'Roboto, sans-serif',
   },
   fontSizes: {
-    sm: '1.5rem',
-    md: '1.2rem',
-    lg: '1rem',
+    sm: '1rem',
+    md: '1.3rem',
+    lg: '1.6rem',
   },
   spacing: {
     sm: '.25em',
