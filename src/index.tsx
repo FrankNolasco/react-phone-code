@@ -9,12 +9,11 @@ import { Theme, ThemeProps } from './data/Theme';
 export type TypeValueExpected = Country | undefined;
 
 interface Props {
-  value: TypeValueExpected;
+  value?: TypeValueExpected;
   onChange: (value: TypeValueExpected) => void;
   disableModal?: boolean;
   size?: SizeType;
   theme?: ThemeProps;
-  darkMode?: boolean;
 }
 
 export const PhoneCode = ({
